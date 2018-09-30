@@ -1,4 +1,4 @@
-Genosha Layout de Genosha
+Layout de Genosha
 
 El frontend esta hecho con create-react-app y en desarrollo corre con el comando "npm start".
 
