@@ -1,0 +1,45 @@
+.App {
+  background-color: #34304E ;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Biggest {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 5px solid #FF1B70;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+.Middlest {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      border: 5px solid #FF1B70;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+
+.Smallest {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 20px solid #FF1B70;
+}
+
+.Title {
+  color: white;
+}
+
+
+.Variable {
+  width: 80px;
+  height: 80px;
+  color: #9794A3;
+}
