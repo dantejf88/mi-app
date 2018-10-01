@@ -1,0 +1,64 @@
+{
+  "apps": [
+    {
+      "name": "greg-operations",
+      "script": "./bin/www",
+      "env_development": {
+        "PORT": 3000,
+        "NODE_ENV": "development",
+        "STAGE": "development",
+        "CHANGE_PASS_URI": "https://urmcrtdi4k.execute-api.us-east-1.amazonaws.com/development/api/v1/user/change-pass"
+      },
+      "env_staging": {
+        "PORT": 3000,
+        "NODE_ENV": "staging",
+        "STAGE": "staging",
+        "CHANGE_PASS_URI": "https://uoihp000dk.execute-api.us-east-1.amazonaws.com/staging/api/v1/user/change-pass"
+      },
+      "env_production": {
+        "PORT": 3000,
+        "NODE_ENV": "production",
+        "STAGE": "production",
+        "CHANGE_PASS_URI": "https://api.greg.com.ar/api/v1/user/change-pass"
+      },
+      "env_local": {
+        "PORT": 7001,
+        "NODE_ENV": "local",
+        "STAGE": "local",
+        "CHANGE_PASS_URI": "http://localhost:3000/api/v1/user/change-pass"
+      }
+    }
+  ],
+  "deploy": {
+    "development": {
+      "user": "ubuntu",
+      "host": "ec2-34-227-242-90.compute-1.amazonaws.com",
+      "key": "~/.ssh/macbookpro_franco_greg_staging.pem",
+      "ref": "origin/development",
+      "repo": "git@bitbucket.org:genosha/greg-operations.git",
+      "path": "/var/local/greg-operations",
+      "pre-deploy-local": "sh pre-deploy-local-development.sh",
+      "post-deploy": "npm install && pm2 startOrRestart ecosystem.json --env development && rm ./ecosystem.json"
+    },
+    "staging": {
+      "user": "ubuntu",
+      "host": "ec2-34-227-226-114.compute-1.amazonaws.com",
+      "key": "~/.ssh/macbookpro_franco_greg_staging.pem",
+      "ref": "origin/development",
+      "repo": "git@bitbucket.org:genosha/greg-operations.git",
+      "path": "/var/local/greg-operations",
+      "pre-deploy-local": "sh pre-deploy-local-staging.sh",
+      "post-deploy": "npm install && pm2 startOrRestart ecosystem.json --env staging && rm ./ecosystem.json"
+    },
+    "production": {
+      "user": "ubuntu",
+      "host": "ec2-18-207-250-254.compute-1.amazonaws.com",
+      "key": "~/.ssh/macbookpro_franco_greg_staging.pem",
+      "ref": "origin/master",
+      "repo": "git@bitbucket.org:genosha/greg-operations.git",
+      "path": "/var/local/greg-operations",
+      "pre-deploy-local": "sh pre-deploy-local-production.sh",
+      "post-deploy": "npm install && pm2 startOrRestart ecosystem.json --env production && rm ./ecosystem.json"
+    }
+  }
+}
