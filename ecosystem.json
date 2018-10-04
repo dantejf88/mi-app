@@ -49,7 +49,7 @@
     "production": {
       "user": "ubuntu",
       "host": "ec2-54-70-127-103.us-west-2.compute.amazonaws.com",
-      "key": "~/.ssh/macbook-pro.pem",
+      "key": "/c/Users/Dante/.ssh/macbook-pro.pem",
       "ref": "origin/master",
       "repo": "git@github.com:dantejf88/mi-app.git",
       "path": "/home/ubuntu/mi-app",
