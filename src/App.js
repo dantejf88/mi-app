@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loadable from 'react-loadable';
 import { ValidationContext } from "./ValidationContext"
 import Form from "./Form"
 import  Warning  from "./Warning"
@@ -11,6 +12,12 @@ class App extends Component {
         nameField: "",
         validField: ""
       }
+  }
+  componentWillMount(){
+    const Genosha = Loadable({
+      loader: () => import('./Genosha'),
+      loading: () => <div>Loading...</div>,
+  });
   }
 
   validateName = this.validateName.bind(this);
@@ -47,6 +54,7 @@ class App extends Component {
     }
   }
 
+
   render() {
     return (
       <div className="App">
@@ -55,7 +63,7 @@ class App extends Component {
             <div className="Smallest"></div>
           </div>
         </div>
-        <h1 className="Title">GENOSHA</h1>
+        <Genosha/>
         <div className="Variable"> <p>{process.env.REACT_APP_ENV}</p> </div>
         <ValidationContext.Provider value={{
             nameField: this.state.nameField,
