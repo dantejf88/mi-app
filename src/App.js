@@ -13,12 +13,6 @@ class App extends Component {
         validField: ""
       }
   }
-  componentWillMount(){
-    const Genosha = Loadable({
-      loader: () => import('./Genosha'),
-      loading: () => <div>Loading...</div>,
-  });
-  }
 
   validateName = this.validateName.bind(this);
   validateName(e){
@@ -63,7 +57,7 @@ class App extends Component {
             <div className="Smallest"></div>
           </div>
         </div>
-        <Genosha/>
+        <h1 className="Title">GENOSHA</h1>
         <div className="Variable"> <p>{process.env.REACT_APP_ENV}</p> </div>
         <ValidationContext.Provider value={{
             nameField: this.state.nameField,
