@@ -15,6 +15,13 @@ class App extends Component {
 
   validateName = this.validateName.bind(this);
   validateName(e){
+    import('./logFile')
+      .then(({ logFile }) => {
+          return logFile()
+      })
+      .catch(err => {
+      throw new Error('GET request failed', err);
+      });
     var name = e.target.value
     var inputVal = document.getElementById("name")
     this.setState({
@@ -55,8 +62,8 @@ class App extends Component {
             validField: this.state.validField,
             validateName: this.validateName
           }}>
-          <Form />
-          <Warning />
+            <Form />
+            <Warning />
         </ValidationContext.Provider>
       </div>
     );
