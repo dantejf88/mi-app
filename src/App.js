@@ -3,19 +3,32 @@ import Loadable from 'react-loadable';
 import { ValidationContext } from "./ValidationContext"
 import Form from "./Form"
 import  Warning  from "./Warning"
-import './App.css';
+import "./App.css";
+
+function Loading() {
+  return <h3>Loading...</h3>;
+}
+
+const Genosha = Loadable({
+  loader: () => import("./Genosha"),
+  loading: Loading
+});
 
 class App extends Component {
   constructor(props){
     super(props)
       this.state = {
         nameField: "",
-        validField: ""
+        validField: "",
+        title: false
       }
   }
 
   validateName = this.validateName.bind(this);
   validateName(e){
+    this.setState({
+      title: true
+    })
     import('./logFile')
       .then(({ logFile }) => {
           return logFile()
@@ -57,7 +70,9 @@ class App extends Component {
             <div className="Smallest"></div>
           </div>
         </div>
-        <h1 className="Title">GENOSHA</h1>
+        {this.state.title &&
+        <Genosha/>
+        }
         <div className="Variable"> <p>{process.env.REACT_APP_ENV}</p> </div>
         <ValidationContext.Provider value={{
             nameField: this.state.nameField,
