@@ -1,21 +1,10 @@
 import React, { Component } from 'react';
 import Loadable from 'react-loadable';
-import { createStore } from "redux"
 import { ValidationContext } from "./ValidationContext"
 import Form from "./Form"
 import  Warning  from "./Warning"
+import LogginButton from "./logginButtonCont"
 import "./App.css";
-
-const initialState = {
-  nameField: "",
-  validField: "",
-  title: false
-}
-
-const store = createStore(
-  (state) => state,
-  initialState
-)
 
 function Loading() {
   return <h3>Loading...</h3>;
@@ -94,6 +83,10 @@ class App extends Component {
             <Form />
             <Warning />
         </ValidationContext.Provider>
+        <LogginButton />
+        {this.state.buttonState &&
+          <h3>funciona</h3>
+        }
       </div>
     );
   }
