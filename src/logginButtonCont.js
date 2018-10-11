@@ -12,8 +12,7 @@ const mapStateToProps = (state) => {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ mappedLogginAction: actions.logginAction,
-                              loggin: actions.loggin }, dispatch)
+  return bindActionCreators({loggin: actions.loggin }, dispatch)
  }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogginButton)

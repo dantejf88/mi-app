@@ -28,16 +28,9 @@ handleSubmit(e){
 
   this.setState({ submitted: true });
   const { username, password } = this.state;
-  const { dispatch } = this.props;
   if (username && password) {
-      dispatch(this.props.loggin(username, password));
+     this.props.loggin(username, password);
   }
-}
-
-
-handleClick = () => {
-  console.log(this.state.username)
-  this.props.mappedLogginAction()
 }
 
   render(){

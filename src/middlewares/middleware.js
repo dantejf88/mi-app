@@ -1,20 +1,21 @@
+import { userConstants } from '../actions/constants';
+import {userService} from "../services/userService"
 
-export const middleware = ({ dispatch }) => next => action => {
-     if (action.type !== 'API') {
+export const middleware = ({ dispatch }) => next => action => { console.log(action.payload)
+     if (action.type !== userConstants.LOGIN_REQUEST) {
      return next(action);
      }
-    
-     // Handle API code
-     };
 
-    //  if (action.type !== 'API') {
-    //  return next(action);
-    //  }
-    
-    //  const { payload } = action;
-    
-    //  fetch(BASE_URL + action.url)
-    //  .then(response => response.json())
-    //  .then(response => dispatch({ type: payload.success, response }))
-    //  };
-     
+     userService.login(action.payload.info)
+        .then(
+            user => { 
+                dispatch({type: userConstants.LOGIN_SUCCESS, user});
+            },
+            error => {
+                dispatch({type: userConstants.LOGIN_FAILURE, error});
+
+            },   
+        );
+};
+
+   
