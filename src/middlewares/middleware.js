@@ -6,15 +6,15 @@ export const middleware = ({ dispatch }) => next => action => { console.log(acti
      return next(action);
      }
 
-     userService.login(action.payload.info)
+     userService.login(action.payload)
         .then(
             user => { 
-                dispatch({type: userConstants.LOGIN_SUCCESS, user});
+                dispatch({type: action.payload.succes, user});
             },
             error => {
                 dispatch({type: userConstants.LOGIN_FAILURE, error});
 
-            },   
+            }   
         );
 };
 

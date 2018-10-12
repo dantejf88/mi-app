@@ -6,14 +6,14 @@ export const userService = {
     getAll
 };
 
-function login(username, password) {
+function login(payload) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify(payload.info)
     };
 
-    return fetch(`/loggin`, requestOptions)
+    return fetch(`${payload.url}`, requestOptions)
         .then(handleResponse)
         .then(user => {
             
