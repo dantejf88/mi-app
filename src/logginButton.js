@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import PropTypes from 'prop-types'
 
 class LogginButton extends Component {
   constructor(props){
@@ -63,6 +64,10 @@ handleSubmit(e){
       </div>
     )
   }
+}
+
+LogginButton.propTypes = {
+  loggin: PropTypes.func
 }
 
 export default LogginButton

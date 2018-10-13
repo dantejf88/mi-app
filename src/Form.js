@@ -27,22 +27,3 @@ class Form extends Component {
 
 export default Form;
 
-
-
-
-
-// <div>
-//   <label >Select one option</label>
-//   <select>
-//     <option selected value="option1">Option1</option>
-//     <option value="option2">Option2</option>
-//     <option value="option3">Option3</option>
-//     <option value="option4">Option4</option>
-//   </select>
-// </div>
-// <div>
-//   <label>Men</label>
-//     <input type="checkbox" name="Men"/>
-//   <label>Women</label>
-//     <input type="checkbox" name="Women" checked="true"/>
-// </div>

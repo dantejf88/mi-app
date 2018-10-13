@@ -5,6 +5,7 @@ import Form from "./Form"
 import  Warning  from "./Warning"
 import LogginButton from "./logginButtonCont"
 import "./App.css";
+import {COLOR} from "./color";
 
 function Loading() {
   return <h3>Loading...</h3>;
@@ -30,13 +31,11 @@ class App extends Component {
     this.setState({
       title: true
     })
-    import('./logFile')
-      .then(({ logFile }) => {
-          return logFile()
-      })
-      .catch(err => {
-      throw new Error('GET request failed', err);
-      });
+    async function codeSplitting(){
+      let code = await import('./logFile')
+          return code.logFile() 
+    }
+    codeSplitting()
     var name = e.target.value
     var inputVal = document.getElementById("name")
     this.setState({
@@ -46,13 +45,13 @@ class App extends Component {
       this.setState({
         validField: "Nombre válido"
       })
-      inputVal.style.backgroundColor = "#66ff33"
+      inputVal.style.backgroundColor = COLOR.BACKGROUND_SUCCES
     }
     else if (name.length > 0 && !name.match(/^A/)) {
         this.setState({
           validField: "Nombre no válido. Debe empezar con A mayúscula"
         })
-        inputVal.style.backgroundColor = "red"
+        inputVal.style.backgroundColor = COLOR.BACKGROUND_FAIL
     }
     else if (name.length === 0) {
       this.setState({
