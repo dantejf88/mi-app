@@ -10,7 +10,12 @@ var users = [{
   id: 1,
   username: 'gonto',
   password: 'gonto'
-}];
+  },
+  {
+    id: 2,
+    username: 'Dante',
+    password: 'Fernandez' 
+  }];
 
 function createIdToken(user) {
   return jwt.sign(_.omit(user, 'password'), config.secret, { expiresIn: 60*60*5 });

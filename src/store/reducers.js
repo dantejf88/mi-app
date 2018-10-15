@@ -11,7 +11,7 @@ export function reducers(state = initialState, action) {
         user: action.user
       };
     case userConstants.LOGIN_FAILURE:
-      return {phrase: "Usuario inexistente"};
+      return {phrase: "Usuario o password inexistente"};
     case userConstants.LOGOUT_SUCCESS:
       return {loggedIn: false};
     case userConstants.PHRASE_SUCCESS:
