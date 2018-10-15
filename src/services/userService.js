@@ -3,7 +3,9 @@ import { authHeader } from './auth-header';
 export const userService = {
     login,
     logout,
-    getAll
+    getAll,
+    fetchPhrase,
+    fetchPrivatePhrase
 };
 
 function login(payload) {
@@ -17,7 +19,7 @@ function login(payload) {
         .then(handleResponse)
         .then(user => {
             
-            if (user.token) {
+            if (user.access_token) {
                 
                 localStorage.setItem('user', JSON.stringify(user));
             }
@@ -27,7 +29,6 @@ function login(payload) {
 } 
 
 function logout() {
-    
     localStorage.removeItem('user');
 }
 
@@ -57,3 +58,30 @@ function handleResponse(response) {
         return data;
     });
 }
+
+function fetchPhrase(payload){
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    }
+    return fetch(`${payload.url}`, requestOptions)
+            .then(response =>{
+                return response.text()
+            })
+};
+
+function fetchPrivatePhrase(payload){
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader(),
+    }
+    return fetch(`${payload.url}`, requestOptions)
+            .then(response =>{ 
+                if (response.status === 401) {
+                    let res = "No tiene autorización"
+                    return res
+                    }
+                return response.text()
+            })
+            
+};

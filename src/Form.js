@@ -8,7 +8,6 @@ class Form extends Component {
       <ValidationContext.Consumer>
         {formField => (
           <form >
-            <h2>Formulario</h2>
             <div >
               <label>
                 Inserte un nombre que comience con A mayúscula:

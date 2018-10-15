@@ -7,12 +7,15 @@ import * as actions from "./actions/logginAction";
 const mapStateToProps = (state) => {
   return {
 
-    mappedAppState: state.reducers
+    mappedAppState: state.appState
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({loggin: actions.loggin }, dispatch)
+  return bindActionCreators({loggin: actions.loggin,
+                             getPhrase: actions.getPhrase,
+                             getPrivatePhrase: actions.getPrivatePhrase,
+                             logout: actions.logout}, dispatch)
  }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogginButton)

@@ -1,6 +1,6 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 import { middleware } from '../middlewares/middleware';
-import { reducers } from './reducers';
+import  reducers  from './index';
 
 
 
