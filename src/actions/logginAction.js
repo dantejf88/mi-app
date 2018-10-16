@@ -30,3 +30,10 @@ export const logout = () => ({
   }
 })
 
+export const createUser = (username, password, extra) => ({
+  type: userConstants.CREATE_REQUEST,
+  payload: {
+    url: "/users",
+    info: {username, password, extra},
+    success: userConstants.CREATE_SUCCESS}
+})

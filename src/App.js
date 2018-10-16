@@ -3,7 +3,9 @@ import Loadable from 'react-loadable';
 import { ValidationContext } from "./ValidationContext"
 import Form from "./Form"
 import  Warning  from "./Warning"
-import LogginButton from "./logginButtonCont"
+import LogginButton from "./LogginButtonCont"
+import PhraseButton from "./PhraseButtonCont"
+import CreateUser from "./CreateUserCont"
 import "./App.css";
 import {COLOR} from "./color";
 
@@ -83,9 +85,8 @@ class App extends Component {
             <Warning />
         </ValidationContext.Provider>
         <LogginButton />
-        {this.state.buttonState &&
-          <h3>funciona</h3>
-        }
+        <PhraseButton />
+        <CreateUser />
       </div>
     );
   }

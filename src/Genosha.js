@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css'
 
 function Genosha () {
-    return <h1 className="Title">GENOSHA</h1>
+    return <h3 className="Title">GENOSHA</h3>
  }
 
 

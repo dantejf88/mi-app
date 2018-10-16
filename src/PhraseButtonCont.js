@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import LogginButton from "./LogginButton";
+import PhraseButton from "./PhraseButton";
 import * as actions from "./actions/logginAction";
 
 
@@ -12,8 +12,8 @@ const mapStateToProps = (state) => {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({loggin: actions.loggin,
-                             logout: actions.logout}, dispatch)
+  return bindActionCreators({getPhrase: actions.getPhrase,
+                             getPrivatePhrase: actions.getPrivatePhrase}, dispatch)
  }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogginButton)
+export default connect(mapStateToProps, mapDispatchToProps)(PhraseButton)

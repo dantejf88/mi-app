@@ -15,7 +15,7 @@
   "scripts": {
     "start": "env-cmd ./env-variables/.env.development react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject",
     "build:staging": "env-cmd ./env-variables/.env.staging npm run build",
     "build:production": "env-cmd ./env-variables/.env.production npm run build",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "babel-eslint": "9.0.0",
     "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
     "react-loadable": "^5.5.0"
   }
 }

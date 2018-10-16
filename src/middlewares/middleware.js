@@ -5,7 +5,8 @@ export const middleware = ({ dispatch }) => next => action => { console.log(acti
      if (action.type !== userConstants.LOGIN_REQUEST && 
          action.type !== userConstants.GET_PHRASE &&
          action.type !== userConstants.GET_PRIVATE_PHRASE && 
-         action.type !== userConstants.LOGOUT) {
+         action.type !== userConstants.LOGOUT && 
+         action.type !== userConstants.CREATE_REQUEST) {
      return next(action);
      }
 
@@ -40,6 +41,10 @@ export const middleware = ({ dispatch }) => next => action => { console.log(acti
      if(action.type === userConstants.LOGOUT){
          userService.logout()
             dispatch({type: userConstants.LOGOUT_SUCCESS})
+     }
+     if(action.type === userConstants.CREATE_REQUEST) {
+         userService.createUser(action.payload)
+         dispatch({type: action.payload.success})
      }   
 };
 

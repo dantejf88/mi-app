@@ -3,9 +3,9 @@ import { authHeader } from './auth-header';
 export const userService = {
     login,
     logout,
-    getAll,
     fetchPhrase,
-    fetchPrivatePhrase
+    fetchPrivatePhrase,
+    createUser
 };
 
 function login(payload) {
@@ -32,29 +32,13 @@ function logout() {
     localStorage.removeItem('user');
 }
 
-function getAll() {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`/data`, requestOptions).then(handleResponse);
-}
-
 function handleResponse(response) {
     return response.text().then(text => {
         const data = text && JSON.parse(text);
-        if (!response.ok) {
-            if (response.status === 401) {
-                
-                logout();
-               
-            }
-
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
+            if (response.status === 401) {               
+            const error = data
+            return error;
         }
-
         return data;
     });
 }
@@ -85,3 +69,13 @@ function fetchPrivatePhrase(payload){
             })
             
 };
+
+function createUser(payload){
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload.info)
+    }
+    return fetch(`${payload.url}`, requestOptions)
+      
+}
