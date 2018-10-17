@@ -1,19 +1,17 @@
- import { fetchPhrase } from './services/userService'
+ import fetchPhrase  from './fetchPhrase'
+ import sum from './sum'
 
- describe('Addition', () => {
-    it('knows that 2 and 2 make 4', () => {
-      expect(2 + 2).toBe(4);
-    });
-  })
+ test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
+});
 
 test('the data is a string', () => {
   const payload = {
-    url: "/api/random-quote",
-    success: userConstants.PHRASE_SUCCESS
+    url: "/api/random-quote"
     }
-    return fetchPhrase(payload).then(res => {
-      let data = res.text()
-      expect(data).toBe(String);
+    return fetchPhrase(payload.url).then(res => {
+
+      expect(res).toBeDefined();
     });
   }
   )

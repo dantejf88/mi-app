@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css'
 
-function Genosha () {
-    return <h3 className="Title">GENOSHA</h3>
- }
+class Genosha extends Component {
+    render() {
+      return (
+          <div><h3 className="Title">GENOSHA</h3></div>
+      )
+    }
+}  
 
 
 export default Genosha

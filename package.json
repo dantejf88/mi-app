@@ -15,7 +15,7 @@
   "scripts": {
     "start": "env-cmd ./env-variables/.env.development react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build:staging": "env-cmd ./env-variables/.env.staging npm run build",
     "build:production": "env-cmd ./env-variables/.env.production npm run build",
@@ -30,8 +30,17 @@
   ],
   "devDependencies": {
     "babel-eslint": "9.0.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
-    "react-loadable": "^5.5.0"
+    "react-loadable": "^5.5.0",
+    "react-test-renderer": "^16.5.2"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

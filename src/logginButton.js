@@ -78,7 +78,10 @@ handleSubmit(e){
 }
 
 LogginButton.propTypes = {
-  loggin: PropTypes.func
+  loggin: PropTypes.func,
+  mappedAppState: PropTypes.shape({
+    loggedIn: PropTypes.bool
+  })
 }
 
 export default LogginButton
