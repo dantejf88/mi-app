@@ -7,4 +7,8 @@ describe('Genosha', () => {
     const genosha = shallow(<Genosha />);
     expect(genosha.find('div').text()).toEqual('GENOSHA');
   });
+  it('Genosha snapshot', () => {
+    const genosha = shallow(<Genosha />);
+    expect(genosha).toMatchSnapshot;
+  });
 });

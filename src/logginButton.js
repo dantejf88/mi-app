@@ -36,10 +36,10 @@ handleChange(e){
 handleSubmit(e){
   e.preventDefault();
 
-  this.setState({ submitted: true });
-  const { username, password } = this.state;
-  if (username && password) {
-     this.props.loggin(username, password);
+this.setState({ username: e.username,
+                password: e.password})
+  if (this.state.username && this.state.password) {
+     this.props.loggin(this.state.username, this.state.password);
   }
 }
 
@@ -57,7 +57,7 @@ handleSubmit(e){
                           </div>
                           <div>
                               <label htmlFor="password">Password </label>
-                              <input type="password" className="form-control" name="password" onChange={this.handleChange}/>
+                              <input type="password" className="form-control" name="password"  onChange={this.handleChange}/>
                               
                           </div>
                           <div className="form-group">
@@ -80,7 +80,8 @@ handleSubmit(e){
 LogginButton.propTypes = {
   loggin: PropTypes.func,
   mappedAppState: PropTypes.shape({
-    loggedIn: PropTypes.bool
+    loggedIn: PropTypes.bool,
+    phrase: PropTypes.string
   })
 }
 
